@@ -1,8 +1,3 @@
-# %%
-import time
-from binance.client import Client
-from binance.enums import *
-from cre import api_key, api_secret, pairs
 import requests
 from tradingview_ta import TA_Handler, Interval
 

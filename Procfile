@@ -1,1 +1,1 @@
-worker:python /app/bist.py
+urgentworker:python /app/bist.py

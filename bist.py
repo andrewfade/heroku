@@ -11,7 +11,7 @@ def telegram_bot(bot_message):
     response = requests.get(send_text)
 
     return response.json()
-7/0
+
 # %%
 def RSI(i) :
     coin = TA_Handler(

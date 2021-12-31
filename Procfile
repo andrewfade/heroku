@@ -1,1 +1,1 @@
-worker:python bist.py
+worker:python /app/bist.py

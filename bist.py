@@ -49,6 +49,12 @@ while counter < 32:
             telegram_bot(f"{i}-{rsi}")
         if rsih <25 :
             telegram_bot(f"{i} saatlik {rsih}")
+        if counter == 31 and rsi < 40:
+            telegram_bot(f"{i} gün sonu {rsi}")
+        if counter == 31 and rsi > 70:
+            telegram_bot("****************")
+            telegram_bot(f"{i} OB {rsi}")
     time.sleep(900)   
     counter += 1 
+    
 

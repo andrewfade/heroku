@@ -1,4 +1,5 @@
 import requests
+import time
 from tradingview_ta import TA_Handler, Interval
 
 # %%
@@ -39,7 +40,8 @@ hisseler = ['ACSEL', 'ADEL', 'AEFES', 'AGHOL', 'AKCNS', 'AKGRT', 'AKMGY', 'AKSA'
 print("hello trader")
 # %%
 telegram_bot("bist started")
-while True:
+counter = 0
+while counter < 32:
     for i in hisseler:
         rsi = RSI(i)
         rsih = RSIH(i)
@@ -47,5 +49,6 @@ while True:
             telegram_bot(f"{i}-{rsi}")
         if rsih <25 :
             telegram_bot(f"{i} saatlik {rsih}")
-
+    time.sleep(900)   
+    counter += 1 
 

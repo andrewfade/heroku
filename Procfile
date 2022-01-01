@@ -1,1 +1,1 @@
-urgentworker:python /app/bist.py
+worker:python bist.py

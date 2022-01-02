@@ -40,7 +40,7 @@ hisseler = ['ACSEL', 'ADEL', 'AEFES', 'AGHOL', 'AKCNS', 'AKGRT', 'AKMGY', 'AKSA'
 print("hello trader")
 # %%
 telegram_bot("bist started")
-counter = 31
+counter = 0
 while counter < 32:
     for i in hisseler:
         rsi = RSI(i)
@@ -54,7 +54,7 @@ while counter < 32:
         if counter == 31 and rsi > 70:
             telegram_bot("****************")
             telegram_bot(f"{i} OB {rsi}")
-    7/0
+    
     time.sleep(900)   
     counter += 1 
     

@@ -54,6 +54,7 @@ while counter < 32:
         if counter == 31 and rsi > 70:
             telegram_bot("****************")
             telegram_bot(f"{i} OB {rsi}")
+    7/0
     time.sleep(900)   
     counter += 1 
     

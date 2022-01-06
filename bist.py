@@ -36,6 +36,7 @@ def RSIH(i) :
     return data["RSI"]
 
 # %%
+elimdekiler = ["ADESE", "CEMTS", "ECILC", "KONTR",  "KRDMA", "TMPOL", "TTRAK", "VESBE", "VESTL", "YATAS"]
 hisseler = ['ACSEL', 'ADEL', 'AEFES', 'AGHOL', 'AKCNS', 'AKGRT', 'AKMGY', 'AKSA', 'AKSGY', 'ALARK', 'ALCAR', 'ALGYO', 'ALKA', 'ALKIM', 'ANELE', 'ANHYT', 'ANSGR', 'ARCLK', 'ARENA', 'ASELS', 'AGESA', 'AYES', 'AYGAZ', 'BAGFS', 'BASCM', 'BFREN', 'BIMAS', 'BIZIM', 'BLCYT', 'BOSSA', 'BRISA', 'BRSAN', 'BRYAT', 'BSOKE', 'BTCIM', 'BUCIM', 'CCOLA', 'CEMTS', 'CIMSA', 'CLEBI', 'CRDFA', 'CUSAN', 'DESPC', 'DGATE', 'DOAS', 'DOCO', 'ECILC', 'ECZYT', 'EGEEN', 'EGGUB', 'EGPRO', 'EGSER', 'EKGYO', 'ENJSA', 'ENKAI', 'ERBOS', 'EREGL', 'ETYAT', 'EUKYO', 'EUYO', 'FMIZP', 'FROTO', 'GENTS', 'GOODY', 'GRNYO', 'HDFGS', 'HEKTS', 'HLGYO', 'INDES', 'ISDMR', 'ISGYO', 'ISMEN', 'ISYAT', 'JANTS', 'KARTN', 'KCHOL', 'KFEIN', 'KLMSN', 'KONYA', 'KORDS', 'KSTUR', 'KUTPO', 'LKMNH', 'MTRYO', 'NUHCM', 'ORGE', 'OTKAR', 'OYAKC', 'OYAYO', 'OZRDN', 'PAGYO', 'PETKM', 'PETUN', 'PNSUT', 'POLHO', 'POLTK', 'PRKAB', 'PSDTC', 'SAFKR', 'SAHOL', 'SANKO', 'SARKY', 'SASA', 'SELEC', 'SISE', 'SNGYO', 'SODSN', 'SRVGY', 'SUMAS', 'TAVHL', 'TCELL', 'TKFEN', 'TLMAN', 'TOASO', 'TRGYO', 'TTKOM', 'TTRAK', 'TUPRS', 'ULKER', 'ULUSE', 'VERUS', 'VESBE', 'YBTAS', 'YGGYO', 'YGYO', 'YONGA', 'YUNSA']
 print("hello trader")
 # %%
@@ -54,7 +55,10 @@ while counter < 32:
         if counter == 31 and rsi > 70:
             telegram_bot("****************")
             telegram_bot(f"{i} OB {rsi}")
-    
+    for i in elimdekiler:
+        rsi = RSI(i)
+        if rsi > 70:
+            telegram_bot(f"SAT\nSAT\nSAT\n{i}-{rsi}")
     time.sleep(900)   
     counter += 1 
     

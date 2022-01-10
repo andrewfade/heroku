@@ -1,5 +1,6 @@
 import requests
 from tradingview_ta import TA_Handler, Interval
+import.time
 
 # %%
 def telegram_bot(bot_message):
@@ -36,24 +37,39 @@ def RSIH(i) :
 
 # %%
 elimdekiler = ["ADESE", "CEMTS", "ECILC", "KONTR",  "KRDMA", "TMPOL", "TTRAK", "VESBE", "VESTL", "YATAS"]
-hisseler = ['ACSEL', 'ADEL', 'AEFES', 'AGHOL', 'AKCNS', 'AKGRT', 'AKMGY', 'AKSA', 'AKSGY', 'ALARK', 'ALCAR', 'ALGYO', 'ALKA', 'ALKIM', 'ANELE', 'ANHYT', 'ANSGR', 'ARCLK', 'ARENA', 'ASELS', 'AGESA', 'AYES', 'AYGAZ', 'BAGFS', 'BASCM', 'BFREN', 'BIMAS', 'BIZIM', 'BLCYT', 'BOSSA', 'BRISA', 'BRSAN', 'BRYAT', 'BSOKE', 'BTCIM', 'BUCIM', 'CCOLA', 'CEMTS', 'CIMSA', 'CLEBI', 'CRDFA', 'CUSAN', 'DESPC', 'DGATE', 'DOAS', 'DOCO', 'ECILC', 'ECZYT', 'EGEEN', 'EGGUB', 'EGPRO', 'EGSER', 'EKGYO', 'ENJSA', 'ENKAI', 'ERBOS', 'EREGL', 'ETYAT', 'EUKYO', 'EUYO', 'FMIZP', 'FROTO', 'GENTS', 'GOODY', 'GRNYO', 'HDFGS', 'HEKTS', 'HLGYO', 'INDES', 'ISDMR', 'ISGYO', 'ISMEN', 'ISYAT', 'JANTS', 'KARTN', 'KCHOL', 'KFEIN', 'KLMSN', 'KONYA', 'KORDS', 'KSTUR', 'KUTPO', 'LKMNH', 'MTRYO', 'NUHCM', 'ORGE', 'OTKAR', 'OYAKC', 'OYAYO', 'OZRDN', 'PAGYO', 'PETKM', 'PETUN', 'PNSUT', 'POLHO', 'POLTK', 'PRKAB', 'PSDTC', 'SAFKR', 'SAHOL', 'SANKO', 'SARKY', 'SASA', 'SELEC', 'SISE', 'SNGYO', 'SODSN', 'SRVGY', 'SUMAS', 'TAVHL', 'TCELL', 'TKFEN', 'TLMAN', 'TOASO', 'TRGYO', 'TTKOM', 'TTRAK', 'TUPRS', 'ULKER', 'ULUSE', 'VERUS', 'VESBE', 'YBTAS', 'YGGYO', 'YGYO', 'YONGA', 'YUNSA']
+hisseler = ['ACSEL', 'ADEL', 'AEFES', 'AGHOL', 'AKCNS', 'AKGRT', 'AKMGY', 'AKSA', 'ALARK', 'ALCAR', 'ALGYO',
+            'ALKA', 'ALKIM', 'ANELE', 'ANHYT', 'ANSGR', 'ARCLK', 'ARENA', 'ARZUM', 'ASELS', 'AGESA', 'AYES', 
+            'AYGAZ', 'BAKAB', 'BASCM', 'BFREN', 'BIMAS', 'BIZIM', 'BRISA', 'BRSAN', 'BRYAT', 'BUCIM', 'CCOLA', 
+            'CELHA', 'CEMTS', 'CIMSA', 'CLEBI', 'CUSAN', 'DESPC', 'DITAS', 'DMSAS', 'DNISI', 'DOAS', 'DOCO', 
+            'ECILC', 'ECZYT', 'EGEEN', 'EGGUB', 'EGPRO', 'EGSER', 'EKGYO', 'ENJSA', 'ENKAI', 'ERBOS', 'EREGL', 
+            'ETYAT', 'EUKYO', 'EUYO', 'FMIZP', 'FROTO', 'GEDIK', 'GENTS', 'GOLTS', 'GOODY', 'GRNYO', 'HEKTS', 
+            'INDES', 'ISDMR', 'ISGYO', 'ISMEN', 'ISYAT', 'JANTS', 'KARTN', 'KCHOL', 'KFEIN', 'KLMSN', 'KONTR',
+            'KONYA', 'KORDS', 'KRVGD', 'KSTUR', 'LKMNH', 'MAVI', 'MTRKS', 'MTRYO', 'NUHCM', 'OTKAR', 'OYAKC', 
+            'OYAYO', 'OZRDN', 'PAGYO', 'PAPIL', 'PETKM', 'PETUN', 'PNSUT', 'POLHO', 'POLTK', 'PRKAB', 'PSDTC', 
+            'SAHOL', 'SANKO', 'SARKY', 'SELEC', 'SISE', 'SODSN', 'SUMAS', 'TATGD', 'TAVHL', 'TCELL', 'TKFEN', 
+            'TLMAN', 'TOASO', 'TTKOM', 'TTRAK', 'TUPRS', 'TURSG', 'ULKER', 'ULUSE', 'VERTU', 'VERUS', 'VESBE', 
+            'YAPRK', 'YGGYO', 'YKSLN', 'YONGA', 'YUNS']
 print("hello trader")
 # %%
 telegram_bot("bist started")
-for i in hisseler:
-    rsi = RSI(i)
-    rsih = RSIH(i)
-    print(i , rsi, rsih)
-    if rsi < 30:
-        telegram_bot(f"{i}-{rsi}")
-    if rsih <25 :
-        telegram_bot(f"{i} saatlik {rsih}")
-    if rsi < 40:
-        telegram_bot(f"{i} gün sonu {rsi}")
-    if rsi > 70:
-        telegram_bot("****************")
-        telegram_bot(f"{i} OB {rsi}")
-for i in elimdekiler:
-    rsi = RSI(i)
-    if rsi > 70:
-        telegram_bot(f"SAT\nSAT\nSAT\n{i}-{rsi}")
+counter = 0
+while counter < 33:
+    for i in hisseler:
+        rsi = RSI(i)
+        rsih = RSIH(i)
+        
+        if rsi < 30:
+            telegram_bot(f"{i}-{rsi}")
+        if rsih <25 :
+            telegram_bot(f"{i} saatlik {rsih}")
+        if counter == 32 and rsi < 40:
+            telegram_bot(f"{i} gün sonu {rsi}")
+        if counter == 32 and rsi > 70:
+            telegram_bot("****************")
+            telegram_bot(f"{i} OB {rsi}")
+    for i in elimdekiler:
+        rsi = RSI(i)
+        if rsi > 70:
+            telegram_bot(f"SAT\nSAT\nSAT\n{i}-{rsi}")
+    counter += 1
+    time.sleep(900)

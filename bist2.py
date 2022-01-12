@@ -48,28 +48,34 @@ hisseler = ['ACSEL', 'ADEL', 'AEFES', 'AGHOL', 'AKCNS', 'AKGRT', 'AKMGY', 'AKSA'
             'OYAYO', 'OZRDN', 'PAGYO', 'PAPIL', 'PETKM', 'PETUN', 'PNSUT', 'POLHO', 'POLTK', 'PRKAB', 'PSDTC', 
             'SAHOL', 'SANKO', 'SARKY', 'SELEC', 'SISE', 'SODSN', 'SUMAS', 'TATGD', 'TAVHL', 'TCELL', 'TKFEN', 
             'TLMAN', 'TOASO', 'TTKOM', 'TTRAK', 'TUPRS', 'TURSG', 'ULKER', 'ULUSE', 'VERTU', 'VERUS', 'VESBE', 
-            'YAPRK', 'YGGYO', 'YKSLN', 'YONGA', 'YUNS']
+            'YAPRK', 'YGGYO', 'YKSLN', 'YONGA', 'YUNSA']
 print("hello trader")
 # %%
 telegram_bot("bist started")
 counter = 0
 while counter < 33:
-    for i in hisseler:
-        rsi = RSI(i)
-        rsih = RSIH(i)
-        
-        if rsi < 30:
-            telegram_bot(f"{i}-{rsi}")
-        if rsih <25 :
-            telegram_bot(f"{i} saatlik {rsih}")
-        if counter == 32 and rsi < 40:
-            telegram_bot(f"{i} gün sonu {rsi}")
-        if counter == 32 and rsi > 70:
-            telegram_bot("****************")
-            telegram_bot(f"{i} OB {rsi}")
-    for i in elimdekiler:
-        rsi = RSI(i)
-        if rsi > 70:
-            telegram_bot(f"SAT\nSAT\nSAT\n{i}-{rsi}")
-    counter += 1
-    time.sleep(900)
+    try:
+        for i in hisseler:
+            #print(i)
+            rsi = RSI(i)
+            rsih = RSIH(i)
+            
+            if rsi < 30:
+                telegram_bot(f"{i}-{rsi}")
+            if rsih <25 :
+                telegram_bot(f"{i} saatlik {rsih}")
+            if counter == 32 and rsi < 40:
+                telegram_bot(f"{i} gün sonu {rsi}")
+            if counter == 32 and rsi > 70:
+                telegram_bot("****************")
+                telegram_bot(f"{i} OB {rsi}")
+        for i in elimdekiler:
+            #print(i)
+            rsi = RSI(i)
+            #print("elimdekiler")
+            if rsi > 70:
+                telegram_bot(f"SAT\nSAT\nSAT\n{i}-{rsi}")
+        counter += 1
+        time.sleep(900)
+    except Exception as e:
+        telegram_bot(f"hata - {i} - {e}")

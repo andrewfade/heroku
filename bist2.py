@@ -36,7 +36,7 @@ def RSIH(i) :
     return data["RSI"]
 
 # %%
-elimdekiler = ["ADESE", "CEMTS", "ECILC", "EREGL",  "KRDMA", "TMPOL", "TTRAK", "VESBE", "VESTL", "YATAS"]
+elimdekiler = ["ADESE", "CEMTS", "ECILC", "EREGL",  "KRDMA", "TMPOL", "TTRAK", "VESBE", "VESTL", "YATAS", "BUCIM", "BIMAS"]
 hisseler = ['ACSEL', 'ADEL', 'AEFES', 'AGHOL', 'AKCNS', 'AKGRT', 'AKMGY', 'AKSA', 'ALARK', 'ALCAR', 'ALGYO',
             'ALKA', 'ALKIM', 'ANELE', 'ANHYT', 'ANSGR', 'ARCLK', 'ARENA', 'ARZUM', 'ASELS', 'AGESA', 'AYES', 
             'AYGAZ', 'BAKAB', 'BASCM', 'BFREN', 'BIMAS', 'BIZIM', 'BRISA', 'BRSAN', 'BRYAT', 'BUCIM', 'CCOLA', 

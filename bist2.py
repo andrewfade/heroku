@@ -1,7 +1,7 @@
 import requests
 from tradingview_ta import TA_Handler, Interval
 import time
-
+.
 # %%
 def telegram_bot(bot_message):
     
@@ -14,7 +14,7 @@ def telegram_bot(bot_message):
     return response.json()
 
 # %%
-def RSI(i) :
+def RSID(i) :
     coin = TA_Handler(
         symbol= i,
         screener = "turkey",
@@ -25,18 +25,27 @@ def RSI(i) :
     return data["RSI"]
 
 # %%
-def RSIH(i) :
+def RSI2H(i) :
     coin = TA_Handler(
         symbol= i,
         screener = "turkey",
         exchange= "BIST",
-        interval=Interval.INTERVAL_1_HOUR
+        interval=Interval.INTERVAL_2_HOURS
     )
     data = coin.get_analysis().indicators
     return data["RSI"]
 
+def RSI30M(i) :
+    coin = TA_Handler(
+        symbol= i,
+        screener = "turkey",
+        exchange= "BIST",
+        interval=Interval.INTERVAL_30_MINUTES
+    )
+    data = coin.get_analysis().indicators
+    return data["RSI"]
 # %%
-elimdekiler = ["ADESE", "CEMTS", "ECILC", "EREGL",  "KRDMA", "TMPOL", "TTRAK", "VESBE", "VESTL", "YATAS", "BUCIM", "BIMAS"]
+elimdekiler = ["ADESE", "CEMTS", "ECILC", "EREGL",  "KRDMA", "TMPOL", "TTRAK", "VESBE", "VESTL", "YATAS", "AKCNS","BIMAS"]
 hisseler = ['ACSEL', 'ADEL', 'AEFES', 'AGHOL', 'AKCNS', 'AKGRT', 'AKMGY', 'AKSA', 'ALARK', 'ALCAR', 'ALGYO',
             'ALKA', 'ALKIM', 'ANELE', 'ANHYT', 'ANSGR', 'ARCLK', 'ARENA', 'ARZUM', 'ASELS', 'AGESA', 'AYES', 
             'AYGAZ', 'BAKAB', 'BASCM', 'BFREN', 'BIMAS', 'BIZIM', 'BRISA', 'BRSAN', 'BRYAT', 'BUCIM', 'CCOLA', 
@@ -47,7 +56,7 @@ hisseler = ['ACSEL', 'ADEL', 'AEFES', 'AGHOL', 'AKCNS', 'AKGRT', 'AKMGY', 'AKSA'
             'KONYA', 'KORDS', 'KRVGD', 'KSTUR', 'LKMNH', 'MAVI', 'MTRKS', 'MTRYO', 'NUHCM', 'OTKAR', 'OYAKC', 
             'OYAYO', 'OZRDN', 'PAGYO', 'PAPIL', 'PETKM', 'PETUN', 'PNSUT', 'POLHO', 'POLTK', 'PRKAB', 'PSDTC', 
             'SAHOL', 'SANKO', 'SARKY', 'SELEC', 'SISE', 'SODSN', 'SUMAS', 'TATGD', 'TAVHL', 'TCELL', 'TKFEN', 
-            'TLMAN', 'TOASO', 'TTKOM', 'TTRAK', 'TUPRS', 'TURSG', 'ULKER', 'ULUSE', 'VERTU', 'VERUS', 'VESBE', 
+            'TLMAN', 'TOASO', 'TTKOM', 'TTRAK', 'TUPRS', 'TURSG', 'ULKER', 'ULUSE', 'VERTU', 'VERUS', 'VESBE', 'VESTL',
             'YAPRK', 'YGGYO', 'YKSLN', 'YONGA', 'YUNSA']
 print("hello trader")
 # %%
@@ -56,22 +65,27 @@ counter = 0
 while counter < 33:
     try:
         for i in hisseler:
-            #print(i)
-            rsi = RSI(i)
-            rsih = RSIH(i)
-            
-            if rsi < 30:
-                telegram_bot(f"{i}-{rsi}")
-            if rsih <25 :
-                telegram_bot(f"{i} saatlik {rsih}")
-            if counter == 32 and rsi < 40:
-                telegram_bot(f"{i} gün sonu {rsi}")
-            if counter == 32 and rsi > 70:
-                telegram_bot("****************")
-                telegram_bot(f"{i} OB {rsi}")
+            print(i)
+            rsid = RSID(i)
+            rsi2h = RSI2H(i)
+            rsi30m = RSI30M(i)
+            mtf_rsi = rsi30m + rsi2h + rsid
+            if rsid < 30:
+                telegram_bot(f"{i}- günlük - {rsi}")
+            if rsi2h <25 :
+                telegram_bot(f"{i} - 2 saatlik - {rsi2h}")
+            if rsi30m <20 :
+                telegram_bot(f"{i} - 30 dakikalık - {rsi30m}")
+            if mtf_rsi < 90 :
+                telegram_bot(f"{i} - MTF - {mtf_rsi}")
+            if counter == 32 and mtf_rsi < 110:
+                telegram_bot(f"{i} gün sonu {mtf_rsi}")
+            # if counter == 32 and rsi > 70:
+            #     telegram_bot("****************")
+            #     telegram_bot(f"{i} OB {rsi}")
         for i in elimdekiler:
-            #print(i)
-            rsi = RSI(i)
+            print(i)
+            rsi = RSID(i)
             #print("elimdekiler")
             if rsi > 70:
                 telegram_bot(f"SAT\nSAT\nSAT\n{i}-{rsi}")

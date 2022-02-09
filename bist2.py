@@ -71,7 +71,7 @@ while counter < 33:
             rsi30m = RSI30M(i)
             mtf_rsi = rsi30m + rsi2h + rsid
             if rsid < 30:
-                telegram_bot(f"{i}- günlük - {rsi}")
+                telegram_bot(f"{i} - günlük - {rsid}")
             if rsi2h <25 :
                 telegram_bot(f"{i} - 2 saatlik - {rsi2h}")
             if rsi30m <20 :

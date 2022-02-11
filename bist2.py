@@ -65,7 +65,7 @@ counter = 0
 while counter < 33:
     try:
         for i in hisseler:
-            print(i)
+            #print(i)
             rsid, price = RSID(i)
             rsi2h = RSI2H(i)
             rsi30m = RSI30M(i)

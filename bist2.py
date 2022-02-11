@@ -22,7 +22,7 @@ def RSID(i) :
         interval=Interval.INTERVAL_1_DAY
     )
     data = coin.get_analysis().indicators
-    return data["RSI"]
+    return data["RSI"], data["close"]
 
 # %%
 def RSI2H(i) :
@@ -66,29 +66,29 @@ while counter < 33:
     try:
         for i in hisseler:
             print(i)
-            rsid = RSID(i)
+            rsid, price = RSID(i)
             rsi2h = RSI2H(i)
             rsi30m = RSI30M(i)
             mtf_rsi = rsi30m + rsi2h + rsid
             if rsid < 30:
-                telegram_bot(f"{i} - günlük - {rsid}")
+                telegram_bot(f"{i} - günlük - {rsid} - price {price}")
             if rsi2h <25 :
-                telegram_bot(f"{i} - 2 saatlik - {rsi2h}")
+                telegram_bot(f"{i} - 2 saatlik - {rsi2h} - price {price}")
             if rsi30m <20 :
-                telegram_bot(f"{i} - 30 dakikalık - {rsi30m}")
+                telegram_bot(f"{i} - 30 dakikalık - {rsi30m} - price {price}")
             if mtf_rsi < 90 :
-                telegram_bot(f"{i} - MTF - {mtf_rsi}")
+                telegram_bot(f"{i} - MTF - {mtf_rsi} - price {price}")
             if counter == 32 and mtf_rsi < 110:
-                telegram_bot(f"{i} gün sonu {mtf_rsi}")
+                telegram_bot(f"{i} gün sonu {mtf_rsi} - price {price}")
             # if counter == 32 and rsi > 70:
             #     telegram_bot("****************")
             #     telegram_bot(f"{i} OB {rsi}")
         for i in elimdekiler:
-            print(i)
-            rsi = RSID(i)
+            #print(i)
+            rsi, price = RSID(i)
             #print("elimdekiler")
             if rsi > 70:
-                telegram_bot(f"SAT\nSAT\nSAT\n{i}-{rsi}")
+                telegram_bot(f"SAT\nSAT\nSAT\n{i}-{rsi} - price {price}")
         counter += 1
         time.sleep(900)
     except Exception as e:

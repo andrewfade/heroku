@@ -61,7 +61,7 @@ hisseler = ['ACSEL', 'ADEL', 'AEFES', 'AGHOL', 'AKCNS', 'AKGRT', 'AKMGY', 'AKSA'
 print("hello trader")
 # %%
 telegram_bot("bist started")
-counter = 0
+counter = 2
 while counter < 33:
     try:
         for i in hisseler:

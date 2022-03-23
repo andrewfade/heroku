@@ -46,7 +46,7 @@ def RSI30M(i) :
     data = coin.get_analysis().indicators
     return data["RSI"]
 # %%
-elimdekiler = ["ADESE", "CEMTS", "ECILC", "EREGL",  "KRDMA", "TMPOL", "TTRAK", "VESBE", "VESTL", "YATAS", "AKCNS","BIMAS"]
+elimdekiler = ["ADESE", "CEMTS", "ECILC", "EREGL",  "KARSN", "TMPOL", "TTRAK", "VESBE", "VESTL", "YATAS"]
 hisseler = ['ACSEL', 'ADEL', 'AEFES', 'AGHOL', 'AKCNS', 'AKGRT', 'AKMGY', 'AKSA', 'ALARK', 'ALCAR', 'ALGYO',
             'ALKA', 'ALKIM', 'ANELE', 'ANHYT', 'ANSGR', 'ARCLK', 'ARENA', 'ARZUM', 'ASELS', 'AGESA', 'AYES', 
             'AYGAZ', 'BAKAB', 'BASCM', 'BFREN', 'BIMAS', 'BIZIM', 'BRISA', 'BRSAN', 'BRYAT', 'BUCIM', 'CCOLA', 

@@ -1,6 +1,6 @@
 import requests
 from tradingview_ta import TA_Handler, Interval
-import time
+import time.
 
 
 # %%

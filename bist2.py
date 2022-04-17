@@ -1,7 +1,7 @@
 import requests
 from tradingview_ta import TA_Handler, Interval
 import time
-
+.
 
 # %%
 def telegram_bot(bot_message):

@@ -1,7 +1,7 @@
 import requests
 from tradingview_ta import TA_Handler, Interval
 import time
-..
+
 
 # %%
 def telegram_bot(bot_message):
@@ -46,7 +46,7 @@ def RSI30M(i) :
     data = coin.get_analysis().indicators
     return data["RSI"]
 # %%
-elimdekiler = ["ADESE", "CEMTS", "ECILC", "EREGL",  "BRISA", "TMPOL", "TTRAK", "VESBE", "VESTL", "YATAS"]
+elimdekiler = ["ADESE", "CEMTS", "ECILC", "EREGL",  "TMPOL", "TTRAK", "VESBE", "VESTL"]
 hisseler = ['ACSEL', 'ADEL', 'AEFES', 'AGHOL', 'AKCNS', 'AKGRT', 'AKMGY', 'AKSA', 'ALARK', 'ALCAR', 'ALGYO',
             'ALKA', 'ALKIM', 'ANELE', 'ANHYT', 'ANSGR', 'ARCLK', 'ARENA', 'ARZUM', 'ASELS', 'AGESA', 'AYES', 
             'AYGAZ', 'BAKAB', 'BASCM', 'BFREN', 'BIMAS', 'BIZIM', 'BRISA', 'BRSAN', 'BRYAT', 'BUCIM', 'CCOLA', 
